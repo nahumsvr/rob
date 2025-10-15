@@ -1,9 +1,9 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.rob.app',
+  appId: 'com.rob.angularapp',
   appName: 'rob',
-  webDir: 'dist'
+  webDir: 'dist/rob/browser',
 };
 
 export default config;
