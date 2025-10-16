@@ -1,0 +1,349 @@
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      min-height: 100vh;
+      background-color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 28rem;
+    }
+
+    .view {
+      width: 100%;
+    }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .session-header {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .header h1 {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    /* STATUS BAR */
+    .status-bar {
+      text-align: right;
+      color: #888;
+      font-size: 0.75rem;
+      margin-bottom: 3rem;
+      margin-top: 1rem;
+    }
+
+    /* INPUTS */
+    .input-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-field {
+      flex: 1;
+    }
+
+    .input-field label {
+      color: #888;
+      font-size: 0.875rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .input-field input {
+      width: 100%;
+      background-color: #1a1a1a;
+      color: #fff;
+      text-align: center;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      border: 1px solid #333;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .input-field input:focus {
+      border-color: #FFD700;
+    }
+
+    /* BUTTON GROUPS */
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 1rem;
+    }
+
+    .btn-secondary {
+      background-color: #4a4a4a;
+      color: #fff;
+      flex: 1;
+    }
+
+    .btn-secondary:hover {
+      background-color: #5a5a5a;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+      color: #fff;
+      flex: 1;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #9333ea 0%, #7e22ce 100%);
+    }
+
+    .btn-start {
+      width: 100%;
+      background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+      color: #fff;
+      padding: 1rem;
+      font-size: 1.125rem;
+      border-radius: 9999px;
+      box-shadow: 0 10px 15px -3px rgba(168, 85, 247, 0.3);
+    }
+
+    .btn-start:hover {
+      background: linear-gradient(135deg, #9333ea 0%, #7e22ce 100%);
+    }
+
+    .btn-text {
+      background: transparent;
+      border: none;
+      color: #888;
+      cursor: pointer;
+      font-size: 0.875rem;
+      transition: color 0.3s;
+    }
+
+    .btn-text:hover {
+      color: #bbb;
+    }
+
+    /* CIRCLE TIMER */
+    .timer-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .initial-circle-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+
+    .circle-wrapper {
+      position: relative;
+      width: 12rem;
+      height: 12rem;
+    }
+
+    .circle-svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .progress-circle {
+      transition: stroke-dashoffset 0.5s linear;
+    }
+
+    .time-button {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    .time-button:hover {
+      opacity: 0.8;
+    }
+
+    .time-text {
+      color: #fff;
+      font-size: 2.25rem;
+      font-weight: 600;
+    }
+
+    .circle-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFD700;
+      font-size: 1.875rem;
+      font-weight: 600;
+    }
+
+    /* COINS DISPLAY */
+    .coins-display {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .coins-text {
+      background: linear-gradient(135deg, #a3e635 0%, #84cc16 100%);
+      color: #000;
+      font-weight: 700;
+      font-size: 1.125rem;
+      padding: 0.5rem 1.5rem;
+      border-radius: 9999px;
+      display: inline-block;
+    }
+
+    .coins-info {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .coins-info p {
+      color: #84cc16;
+      font-weight: 600;
+      font-size: 1.125rem;
+    }
+
+    /* CONTROLS */
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn-circle {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-play {
+      background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+    }
+
+    .btn-play:hover {
+      background: linear-gradient(135deg, #9333ea 0%, #7e22ce 100%);
+    }
+
+    .btn-stop {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    }
+
+    .btn-stop:hover {
+      background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    }
+
+    .icon {
+      width: 2rem;
+      height: 2rem;
+      fill: #fff;
+    }
+
+    .stop-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      background-color: #fff;
+      border-radius: 0.25rem;
+    }
+
+    /* CANCEL CONTAINER */
+    .cancel-container {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    /* INPUT SECTION */
+    .input-section {
+      margin-bottom: 3rem;
+    }
+
+    /* START BUTTON CONTAINER */
+    .start-button-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* FOOTER INFO */
+    .footer-info {
+      margin-top: 2rem;
+      text-align: center;
+      color: #666;
+      font-size: 0.75rem;
+    }
+
+    .footer-info p {
+      margin: 0;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      .container {
+        padding: 1rem;
+      }
+
+      .circle-wrapper {
+        width: 10rem;
+        height: 10rem;
+      }
+
+      .time-text {
+        font-size: 1.875rem;
+      }
+
+      .header h1 {
+        font-size: 1.25rem;
+      }
+
+      .btn-circle {
+        width: 3.5rem;
+        height: 3.5rem;
+      }
+
+      .icon {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
