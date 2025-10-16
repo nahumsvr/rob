@@ -1,0 +1,147 @@
+// --- Variables ---
+$font-family: 'Inter', sans-serif;
+$primary-bg-color: #1f2937; // gray-800
+$container-bg-color: #1C1C1E;
+$text-color: #ffffff;
+$text-light-gray: #E5E7EB; // gray-200
+$text-medium-gray: #9CA3AF; // gray-400
+$accent-color: #AEFF2D;
+$accent-text-color: #0F4D09;
+$circle-bg-color: #3A3A3C;
+
+// --- Colores de Fase ---
+$inhale-color: #6EE7B7;
+$hold-color: #FCD34D;
+$exhale-color: #FCA5A5;
+
+
+// --- Reset Básico y Estilos Globales ---
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family;
+    background-color: $primary-bg-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    color: $text-color;
+    -webkit-tap-highlight-color: transparent;
+}
+
+// --- Contenedor Principal (Simula Teléfono) ---
+.phone-container {
+    width: 100%;
+    max-width: 24rem;
+    height: 85vh;
+    max-height: 750px;
+    background-color: $container-bg-color;
+    border-radius: 40px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+// --- Contenido Principal de la App ---
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+// --- Elementos de la UI ---
+#phase-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: $text-light-gray;
+    height: 4rem;
+}
+
+#start-screen {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+#start-btn {
+    width: 100%;
+    max-width: 20rem;
+    background-color: $accent-color;
+    color: $accent-text-color;
+    font-weight: 700;
+    padding: 1rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 1.25rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s ease-out;
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+#timer-display {
+    position: relative;
+    width: 16rem;
+    height: 16rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    margin: 2rem 0;
+
+    svg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform: rotate(-90deg);
+    }
+}
+
+.progress-ring__circle-bg {
+    stroke: $circle-bg-color;
+    stroke-width: 12;
+    fill: transparent;
+}
+
+.progress-ring__circle {
+    stroke: $inhale-color;
+    stroke-linecap: round;
+    stroke-width: 12;
+    fill: transparent;
+    transition: stroke-dashoffset 1s linear, stroke 0.5s ease;
+}
+
+#timer-text {
+    font-size: 3.75rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+}
+
+#repetition-counter {
+    font-size: 1.125rem;
+    color: $text-medium-gray;
+    height: 2rem;
+}
+
+// --- Clase de Utilidad ---
+.hidden {
+    display: none;
+}
+

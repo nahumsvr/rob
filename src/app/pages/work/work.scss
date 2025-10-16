@@ -1,0 +1,208 @@
+// @use '../../../styles/components/buttons' as *;
+/* Contenedor principal del temporizador */
+.timer-container {
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  // box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 350px;
+  color: whitesmoke;
+  margin: 0 auto;
+}
+
+/* Grupo de entrada principal (conteniendo los campos y el botón) */
+.input-group {
+  display: flex;
+  flex-direction: column; /* Organiza los hijos verticalmente */
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  /* Contenedor específico para los campos de horas y minutos */
+  /* Este es el elemento que ahora será horizontal */
+  .d-flex {
+    display: flex;
+    flex-direction: row; /* Organiza los campos horizontalmente */
+    gap: 1rem;
+    justify-content: center;
+    /* Se elimina el width: 100% para que se centre basado en su contenido */
+    align-items: flex-end; /* Alinea los inputs en la parte inferior */
+    position: relative; /* Contexto para el posicionamiento del separador */
+
+    /* El separador de dos puntos */
+    &::after {
+      content: ':';
+      position: absolute;
+      color: whitesmoke;
+      font-size: 1.5rem;
+      font-weight: bold;
+      left: 50%;
+      /* Se alinea verticalmente con el centro del texto del input */
+      bottom: 0.65rem;
+      transform: translateX(-50%);
+      /* Evita que el separador sea clickeable */
+      pointer-events: none;
+    }
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+/* Estilos para cada campo individual (label + input) */
+.input-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.input-field label {
+  color: #888;
+  font-size: 0.875rem;
+  display: block;
+}
+
+.input-field input {
+  width: 100px;
+  background-color: #1a1a1a;
+  color: #fff;
+  text-align: center;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #333;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+  -moz-appearance: textfield; /* Para Firefox */
+}
+
+.input-field input:focus {
+  border-color: #FFD700;
+}
+
+/* Ocultar flechas en inputs numéricos para Chrome, Safari, Edge y Opera */
+.input-field input::-webkit-outer-spin-button,
+.input-field input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Botón de establecer */
+.input-group button {
+  padding: 10px 20px;
+  // font-size: 1rem;
+  // border: none;
+  // border-radius: 20px;
+  // cursor: pointer;
+  // background-color: #6c757d;
+  // color: white;
+  // transition: all 253ms cubic-bezier(0.57, 0.39, 0.47, 1.71);
+}
+
+// .input-group button:hover:not(:disabled) {
+//   background-color: #5a6268;
+// }
+
+.input-group button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+/* Círculo y Texto del temporizador */
+.timer-display {
+  position: relative;
+  width: 80dvw;
+  height: 80dvw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-ring {
+  /* NOTA: Para que el SVG escale, asegúrate de que tenga el atributo viewBox="0 0 200 200" en tu HTML */
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.progress-ring__circle-bg,
+.progress-ring__circle {
+  fill: transparent;
+  stroke-width: 10;
+}
+
+.progress-ring__circle-bg {
+  stroke: #333; /* Color de fondo del círculo */
+}
+
+.progress-ring__circle {
+  stroke: #ff9500;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s linear;
+}
+
+.timer-text {
+  position: absolute;
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: whitesmoke;
+}
+
+/* Botones de control (Iniciar, Pausar, Reiniciar) */
+.controls {
+  display: flex;
+  gap: 1rem;
+}
+
+.controls button, .input-group button {
+  padding: 10px 20px;
+  height: 4rem;
+  width: 10rem;
+  border: none;
+  // font-weight: 500;
+  font-size: 1.5rem;
+  text-align: center;
+  border-radius: 20px;
+  cursor: pointer;
+  color: white;
+}
+
+.controls button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.controls button.start-pause {
+  background-color: #ff9500;
+}
+
+.controls button.start-pause:hover:not(:disabled) {
+  background-color: #e08500;
+}
+
+.controls button.reset {
+  background-color: #6c757d;
+}
+
+.controls button.reset:hover:not(:disabled) {
+  background-color: #5a6268;
+}
+
+
+.coins-counter {
+  display: inline-flex; /* Usa 'flex' si el span es un elemento de bloque */
+  align-items: center; /* Esta es la propiedad clave para centrar verticalmente */
+  gap: 0.5rem;
+  padding: .5rem 1rem;
+  background-color: #AEFF2D;
+  color: #0F4D09;
+  border-radius: 20px;
+  font-size: 1.2rem;
+}
