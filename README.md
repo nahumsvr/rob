@@ -1,59 +1,72 @@
-# Rob
+# Rob - Tu compañero de estudio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.0.
+## Descripción
 
-## Development server
+Rob, tu nuevo mejor amigo, incentiva un equilibrio saludable: se alimenta y prospera cuando el estudiante completa tanto sesiones de estudio enfocadas como pausas de descanso activo, como meditaciones y ejercicios de respiración. Este ciclo positivo no solo impulsa la productividad, sino que también promueve activamente la salud mental.
 
-To start a local development server, run:
+## Cómo Empezar
 
-```bash
-ng serve
-```
+Sigue estas instrucciones para tener una copia del proyecto corriendo en tu máquina local para desarrollo y pruebas.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Prerrequisitos
 
-## Code scaffolding
+Necesitarás tener instalado en tu sistema:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+  * Node.js y npm
+  * Angular CLI
+  * Xcode
+  * CocoaPods
 
-```bash
-ng generate component component-name
-```
+### Clonar el Repositorio
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+Primero, clona el repositorio en tu máquina local usando el siguiente comando en tu terminal:
 
 ```bash
-ng build
+git clone https://github.com/nahumsvr/rob.git
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### Instalar Dependencias
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Navega al directorio del proyecto e instala las dependencias necesarias:
 
 ```bash
-ng test
+cd rob
+npm install
 ```
 
-## Running end-to-end tests
+### Correr en Xcode (para iOS)
 
-For end-to-end (e2e) testing, run:
+1.  **Construir el proyecto de Angular:**
 
-```bash
-ng e2e
-```
+    ```bash
+    ng build --configuration=production
+    ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+2.  **Añadir la plataforma de iOS a Capacitor:**
 
-## Additional Resources
+    ```bash
+    npx cap add ios
+    ```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+3.  **Sincronizar el proyecto:**
+
+    ```bash
+    npx cap sync
+    ```
+
+4.  **Abrir el proyecto en Xcode:**
+
+    ```bash
+    npx cap open ios
+    ```
+
+5.  Una vez que Xcode esté abierto, puedes seleccionar un simulador o un dispositivo físico y correr la aplicación.
+
+## Futuras Implementaciones
+
+Nuestro plan es evolucionar "Rob" con las siguientes mejoras clave:
+
+  * **Gamificación y Recompensas:** Implementar un sistema de moneda virtual para desbloquear accesorios y personalizar a Rob.
+  * **Módulo de Bienestar Avanzado:** Integrar meditaciones guiadas y sincronización con Apple Health para monitorizar la calidad del sueño.
+  * **Herramientas de Enfoque Total:** Introducir un modo de concentración que bloquee notificaciones y aplicaciones que generen distracciones.
+  * **Modelo de Sostenibilidad:** Añadir compras integradas opcionales para contenido cosmético.
