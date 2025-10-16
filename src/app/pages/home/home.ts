@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Duck } from "../../components/duck/duck";
+import { Coins } from '../../services/coins';
 
 @Component({
   selector: 'app-home',
@@ -8,4 +9,5 @@ import { Duck } from "../../components/duck/duck";
   styleUrl: './home.scss'
 })
 export class Home {
+  coinsService = inject(Coins);
 }

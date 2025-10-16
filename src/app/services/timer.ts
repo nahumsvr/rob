@@ -1,9 +1,11 @@
-import { computed, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
+import { Coins } from './coins';
 
 @Injectable({
   providedIn: 'root'
 })
 export class Timer {
+  coinsService = inject(Coins);
   // --- Estado Interno con Signals ---
   // Guardamos el estado inicial para cálculos de progreso
   private internalState = signal({
@@ -13,7 +15,6 @@ export class Timer {
     isPaused: false,
     isFinished: true // Nuevo estado para saber si el timer ha finalizado
   });
-
   coins = signal({
     visible: false,
     amount: 0
@@ -94,7 +95,7 @@ export class Timer {
             isFinished: true // Marcamos como finalizado
           };
         }
-
+        this.coinsService.addCoins(this.coins().amount);
         return { ...state, currentSeconds: newSeconds };
       });
     }, 1000);
