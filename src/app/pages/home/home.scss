@@ -1,0 +1,10 @@
+.home-container {
+  height: 100%;
+  grid-template-rows: 3rem auto;
+  padding-bottom: 5rem;
+}
+
+.header-container {
+  gap: 1rem;
+  grid-template-columns: repeat(3, 3rem) auto;
+}

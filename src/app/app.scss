@@ -1,0 +1,13 @@
+.menu {
+  width: 100%;
+  justify-content: space-around;
+  bottom: 0;
+  background-color: #302E33;
+  button.active {
+    border: #635f68 solid 2px;
+  }
+}
+
+.app-container {
+  height: 100%;
+}
