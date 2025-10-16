@@ -1,0 +1,55 @@
+// _mixins.scss
+
+@mixin generate-spacing-classes($property, $abbreviation) {
+  // Genera clases para un solo lado (m-t-1, m-b-2, etc.)
+  @each $direction-key, $direction-value in $directions {
+    @each $size-key, $size-value in $spacers {
+      .#{$abbreviation}-#{$direction-key}-#{$size-key} {
+        #{$property}-#{$direction-value}: $size-value;
+      }
+    }
+  }
+
+  // Genera clases para los ejes (m-x-1, m-y-2, etc.)
+  @each $axis-key, $axis-values in $axes {
+    @each $size-key, $size-value in $spacers {
+      .#{$abbreviation}-#{$axis-key}-#{$size-key} {
+        @each $axis-value in $axis-values {
+          #{$property}-#{$axis-value}: $size-value;
+        }
+      }
+    }
+  }
+
+  // Genera clases para todos los lados (m-1, m-2, etc.)
+  @each $size-key, $size-value in $spacers {
+    .#{$abbreviation}-#{$size-key} {
+      #{$property}: $size-value;
+    }
+  }
+}
+
+// _mixins.scss
+@mixin generate-size-classes($property, $abbreviation) {
+  @each $key, $value in $sizes {
+    .#{$abbreviation}-#{$key} {
+      #{$property}: $value;
+    }
+  }
+}
+
+@mixin font-size($key) {
+  @if map-has-key($font-sizes, $key) {
+    font-size: map-get($font-sizes, $key);
+  } @else {
+    @warn "El tamaño de fuente '#{$key}' no existe en la escala.";
+  }
+}
+
+@mixin font-weight($key) {
+  @if map-has-key($font-weights, $key) {
+    font-weight: map-get($font-weights, $key);
+  } @else {
+    @warn "El peso de fuente '#{$key}' no existe en la escala.";
+  }
+}

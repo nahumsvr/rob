@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'styles/main';
+@import 'styles/abstracts/variables';
+
+html, body {
+  background-color: #161517;
+  height: 100dvh;
+}
+
+.menu {
+  width: 100%;
+  justify-content: space-around;
+  bottom: 0;
+  background-color: #302E33;
+  button.active {
+    border: #635f68 solid 2px;
+    // background-color: #635f68;
+  }
+}
+

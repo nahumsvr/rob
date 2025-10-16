@@ -1,0 +1,32 @@
+// --- _base.scss ---
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+// Tus variables globales de tipografía
+
+// Aplicar estilos a la etiqueta body
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: 1.5;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Establecer un tamaño de fuente base más fácil de calcular con 'rem'
+html {
+  font-size: 100%; // Es una buena práctica para accesibilidad
+}
+
+// Estilos para títulos
+h1, h2, h3, h4 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+button, a {
+  cursor: pointer;
+}
+
+ul, ol {
+  padding-left: 1.5rem;
+}

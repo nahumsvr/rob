@@ -1,0 +1,26 @@
+// --- main.scss ---
+
+// 1. Herramientas: variables, funciones, mixins
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+// Genera las clases de espaciado
+@include generate-spacing-classes(margin, m);
+@include generate-spacing-classes(padding, p);
+
+// Genera las clases de ancho y alto
+@include generate-size-classes(width, w);
+@include generate-size-classes(height, h);
+
+@import 'abstracts/typography';
+// 2. Base: normalize, reset, tipografía, estilos globales
+@import 'base/reset';
+@import 'base/base';
+
+// 3. Componentes y layouts
+@import 'components/buttons';
+@import 'components/inputs';
+
+// 4. Utilities
+@import 'utilities/utilities';
+

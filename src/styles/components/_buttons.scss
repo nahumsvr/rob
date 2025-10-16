@@ -1,0 +1,50 @@
+
+@mixin button-default($hover-color, $hover-color-txt) {
+  border-radius: 25px;
+  text-align: center;
+  transition: all 200ms;
+  // font-size: 1rem;
+  font-weight: 550;
+
+  &:hover:not(:disabled) {
+    scale: 105%;
+    @if($hover-color) {
+      background-color: $hover-color;
+    }
+    @if($hover-color-txt) {
+      color: $hover-color-txt;
+    }
+  }
+
+  &:active:not(:disabled) {
+    scale: 95%;
+  }
+
+  &:disabled {
+    background-color: $dis;
+  }
+}
+
+.btn-blue {
+  @include button-default(#011B32, #fff);
+  background-color: $pri;
+}
+
+.btn-orange {
+  @include button-default($snd, #000);
+  background-color: $snd;
+}
+
+.btn-secondary {
+  @include button-default(transparent, #fff);
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+button {
+  transition: 200ms cubic-bezier(0.57, 0.39, 0.47, 1.71);
+  &:active:not(:disabled) {
+    scale: 85%;
+  }
+}

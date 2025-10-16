@@ -1,0 +1,67 @@
+// _variables.scss
+
+$txt-pri: #000;
+$txt-sec: #000;
+$txt-dis: #222;
+$back: #040C1A;
+$back-sec: #D9D9D9;
+$pri: #0FD4F7;
+$snd: #FF9933;
+$trd: #FF7F00;
+$dis: #999;
+$dang: #a91e0e;
+$warn: #e78c3c;
+$succ: #7fd73c;
+
+// Escala de espaciado
+$spacers: (
+  0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 1rem,
+  4: 1.5rem,
+  5: 3rem,
+);
+
+// Mapas para direcciones (top, bottom, left, right) y ejes (x, y)
+$directions: (
+  t: top,
+  b: bottom,
+  l: left,
+  r: right,
+);
+
+$axes: (
+  x: (left, right),
+  y: (top, bottom),
+);
+
+$font-sizes: (
+  1: 2.5rem,  // Título muy grande
+  2: 2rem,    // Título grande
+  3: 1.5rem,  // Subtítulo
+  4: 1.25rem, // Encabezado de sección
+  5: 1rem,    // Texto base
+  6: 0.875rem // Texto pequeño
+);
+
+$sizes: (
+  0: 0,
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%,
+  5: auto,
+);
+
+$font-weights: (
+  light: 300,
+  regular: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+  black: 800
+);
+
+$font-family-base: 'Inter', sans-serif;
+$font-size-base: 16px;

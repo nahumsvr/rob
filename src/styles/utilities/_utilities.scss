@@ -1,0 +1,73 @@
+/* src/styles/components/_utilities.scss */
+
+// 1. CLASES DE DISPLAY
+.d-flex {
+  display: flex;
+}
+
+.d-grid {
+  display: grid;
+}
+
+.d-inline-flex {
+  display: inline-flex;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+.d-none {
+  display: none;
+}
+
+// 2. CLASES DE POSITION
+.p-absolute {
+  position: absolute;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.p-fixed {
+  position: fixed;
+}
+
+.z-1 {
+  z-index: 1;
+}
+.z-2 {
+  z-index: 5;
+}
+.z-3 {
+  z-index: 10;
+}
+.z-4 {
+  z-index: 15;
+}
+
+.center-x {
+  justify-items: center;
+}
+
+.center-y {
+  align-items: center;
+}
+
+.center-x-txt {
+  width: 100%;
+  text-align: center;
+}
+
+.br-1 {
+  border-radius: 16px;
+}
+
+.transparent {
+  background-color: transparent;
+}

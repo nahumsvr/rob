@@ -1,0 +1,39 @@
+/* --- _reset.scss --- */
+
+// Resetear el modelo de caja para todos los elementos.
+// Esto facilita el cálculo de anchos y alturas, ya que el padding y border se incluyen.
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// Eliminar el margen y el padding por defecto del body
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+// Asegurar que las imágenes sean responsivas
+img {
+  max-width: 100%;
+  display: block; // Para eliminar el espacio extra debajo de las imágenes
+}
+
+// Estilos para enlaces
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border-style: hidden;
+}
