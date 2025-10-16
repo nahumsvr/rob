@@ -1,45 +1,46 @@
 
-@mixin button-default($hover-color, $hover-color-txt) {
-  border-radius: 25px;
+@mixin button-default($back-color, $txt-color) {
+  border-radius: 18px;
   text-align: center;
   transition: all 200ms;
   // font-size: 1rem;
-  font-weight: 550;
+  font-weight: 700;
+  background-color: $back-color;
+  color: $txt-color;
 
-  &:hover:not(:disabled) {
-    scale: 105%;
-    @if($hover-color) {
-      background-color: $hover-color;
-    }
-    @if($hover-color-txt) {
-      color: $hover-color-txt;
-    }
-  }
+  // &:hover:not(:disabled) {
+  //   scale: 105%;
+  //   @if($hover-color) {
+  //     background-color: $hover-color;
+  //   }
+  //   @if($hover-color-txt) {
+  //     color: $hover-color-txt;
+  //   }
+  // }
 
   &:active:not(:disabled) {
     scale: 95%;
   }
 
-  &:disabled {
-    background-color: $dis;
-  }
+  // &:disabled {
+  //   background-color: $dis;
+  // }
 }
 
-.btn-blue {
-  @include button-default(#011B32, #fff);
-  background-color: $pri;
+.btn-pur {
+  @include button-default(#7A32C2, #fff);
 }
 
-.btn-orange {
-  @include button-default($snd, #000);
-  background-color: $snd;
+.btn-red {
+  @include button-default(#C2324F, #fff);
+  // background-color: $snd;
 }
 
-.btn-secondary {
-  @include button-default(transparent, #fff);
-  background-color: transparent;
-  border: 2px solid #fff;
-  color: #fff;
+.btn-green {
+  @include button-default(#2cad36, #fff);
+  // background-color: transparent;
+  // border: 2px solid #fff;
+  // color: #fff;
 }
 
 button {

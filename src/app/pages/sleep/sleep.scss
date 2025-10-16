@@ -1,0 +1,145 @@
+:host {
+      --background-dark: #121212;
+      --card-dark: #1E1E1E;
+      --text-primary: #FFFFFF;
+      --text-secondary: #A0A0A0;
+      --border-color: #383838;
+      --gradient-start: #63D4E4;
+      --gradient-end: #30E8A9;
+      --button-gradient-start: #D4FC79;
+      --button-gradient-end: #96E6A1;
+    }
+
+    :host {
+      display: block;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      color: var(--text-primary);
+      height: 100%;
+    }
+
+    .sleep-container {
+      padding: 24px;
+      padding-bottom: 120px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .header h1 {
+      font-size: 24px;
+      margin: 0 0 8px 0;
+    }
+    .header p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .card {
+      background-color: var(--card-dark);
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      padding: 20px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+
+    .chart-card {
+      display: flex;
+      gap: 16px;
+      height: 250px;
+    }
+
+    .y-axis {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-secondary);
+      height: 100%;
+    }
+
+    .chart-area {
+      flex-grow: 1;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      height: 100%;
+      gap: 12px;
+    }
+
+    .bar-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      height: 100%;
+      justify-content: flex-end;
+    }
+
+    .bar {
+      width: 25px;
+      background: linear-gradient(to top, var(--gradient-start), var(--gradient-end));
+      border-radius: 10px 10px 0 0;
+      transition: height 0.5s ease-in-out;
+    }
+
+    .day-label {
+      margin-top: 8px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .stats-card h2 {
+      margin: 0 0 16px 0;
+      font-size: 18px;
+    }
+    .stats-card p {
+      margin: 8px 0;
+      color: var(--text-secondary);
+    }
+    .stats-card strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .action-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 150px;
+      margin: 10px auto;
+      padding: .5rem;
+      border-radius: 50px;
+      border: none;
+      background: #AEFF2D;
+      color: #0F4D09;
+      font-size: 18px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      background-color: var(--card-dark);
+      padding: 10px 0 20px 0;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .nav-item {
+      font-size: 28px;
+      text-decoration: none;
+      color: var(--text-secondary);
+    }
+
+    .nav-item.active {
+      color: var(--gradient-end);
+    }

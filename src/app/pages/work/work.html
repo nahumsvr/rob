@@ -1,187 +1,82 @@
-    <div class="container">
-      <div class="wrapper">
-        <!-- EDITING TIME VIEW -->
-        <div *ngIf="editingTime" class="view">
-          <div class="header">
-            <h1>Ajustar tiempo</h1>
+<div class="timer-container center-x">
+  <div class="input-group center-x" >
+    @if(timerService.state().isFinished) {
+      <div class="input-group d-flex w-100">
+          <div class="input-field">
+            <label>Horas</label>
+            <input
+              type="number"
+              [(ngModel)]="inputHours"
+              placeholder="0"
+              min="0"
+              max="3"
+            />
           </div>
-
-          <div class="input-group">
-            <div class="input-field">
-              <label>Horas</label>
-              <input
-                type="number"
-                [(ngModel)]="tempHours"
-                placeholder="0"
-                min="0"
-                max="23"
-              />
-            </div>
-            <div class="input-field">
-              <label>Minutos</label>
-              <input
-                type="number"
-                [(ngModel)]="tempMinutes"
-                placeholder="0"
-                min="0"
-                max="59"
-              />
-            </div>
-          </div>
-
-          <div class="button-group">
-            <button (click)="cancelEditTime()" class="btn btn-secondary">
-              Cancelar
-            </button>
-            <button (click)="saveEditTime()" class="btn btn-primary">
-              Guardar
-            </button>
-          </div>
-        </div>
-
-        <!-- SESSION VIEW -->
-        <div *ngIf="showSession && !editingTime" class="view">
-          <div class="header session-header">
-            <h1>Sesión de estudio</h1>
-          </div>
-
-          <!-- Circle Timer -->
-          <div class="timer-container">
-            <div class="circle-wrapper">
-              <svg class="circle-svg" viewBox="0 0 200 200">
-                <!-- Background circle (gray) -->
-                <circle
-                  cx="100"
-                  cy="100"
-                  r="90"
-                  fill="none"
-                  stroke="#333333"
-                  stroke-width="8"
-                />
-                <!-- Progress circle (yellow, decreasing) -->
-                <circle
-                  class="progress-circle"
-                  cx="100"
-                  cy="100"
-                  r="90"
-                  fill="none"
-                  stroke="#FFD700"
-                  stroke-width="8"
-                  [attr.stroke-dasharray]="circumference"
-                  [attr.stroke-dashoffset]="strokeDashoffset"
-                  stroke-linecap="round"
-                />
-              </svg>
-              <!-- Center text - clickable -->
-              <button (click)="startEditingTime()" class="time-button">
-                <span class="time-text">
-                  {{ formatTime(remainingSeconds) }}
-                </span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Coins display -->
-          <div class="coins-display">
-            <span class="coins-text">+{{ calculateCoins() }}</span>
-          </div>
-
-          <!-- Controls -->
-          <div class="controls">
-            <button (click)="handlePause()" class="btn-circle btn-play">
-              <svg *ngIf="isRunning" viewBox="0 0 24 24" class="icon">
-                <rect x="6" y="4" width="4" height="16" />
-                <rect x="14" y="4" width="4" height="16" />
-              </svg>
-              <svg *ngIf="!isRunning" viewBox="0 0 24 24" class="icon">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </button>
-            <button (click)="handleFinish()" class="btn-circle btn-stop">
-              <div class="stop-icon"></div>
-            </button>
-          </div>
-
-          <!-- Cancel button -->
-          <div class="cancel-container">
-            <button (click)="handleCancel()" class="btn-text">
-              Salir
-            </button>
-          </div>
-        </div>
-
-        <!-- INITIAL VIEW -->
-        <div *ngIf="!showSession && !editingTime" class="view">
-          <!-- Status Bar -->
-          <div class="status-bar">
-            <span>2:30</span>
-          </div>
-
-          <!-- Header -->
-          <div class="header">
-            <h1>Sesión de estudio</h1>
-          </div>
-
-          <!-- Circle with yellow border -->
-          <div class="initial-circle-container">
-            <div class="circle-wrapper">
-              <svg class="circle-svg" viewBox="0 0 160 160">
-                <circle
-                  cx="80"
-                  cy="80"
-                  r="70"
-                  fill="none"
-                  stroke="#FFD700"
-                  stroke-width="6"
-                />
-              </svg>
-              <div class="circle-text">
-                <span>HH:MM</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Input Section -->
-          <div class="input-section">
-            <div class="input-group">
-              <div class="input-field">
-                <label>Horas</label>
-                <input
-                  type="number"
-                  [(ngModel)]="hours"
-                  placeholder="0"
-                  min="0"
-                  max="23"
-                />
-              </div>
-              <div class="input-field">
-                <label>Minutos</label>
-                <input
-                  type="number"
-                  [(ngModel)]="minutes"
-                  placeholder="0"
-                  min="0"
-                  max="59"
-                />
-              </div>
-            </div>
-
-            <div *ngIf="coins > 0" class="coins-info">
-              <p>Monedas disponibles: {{ coins }}</p>
-            </div>
-          </div>
-
-          <!-- Start Button -->
-          <div class="start-button-container">
-            <button (click)="handleStart()" class="btn btn-start">
-              Iniciar
-            </button>
-          </div>
-
-          <!-- Footer info -->
-          <div class="footer-info">
-            <p>Cada 3 minutos = 1 moneda</p>
-          </div>
+          <div class="input-field">
+            <label>Minutos</label>
+            <input
+              type="number"
+              [(ngModel)]="inputMinutes"
+              placeholder="0"
+              min="0"
+              max="59"
+            />
         </div>
       </div>
-    </div>
+      <button (click)="setTimer()" [disabled]="timerService.state().isRunning" class="btn-green">Establecer</button>
+    }
+  <div class="timer-display">
+    <!-- Se ha añadido el atributo viewBox para que el SVG sea escalable -->
+    <svg class="progress-ring" viewBox="0 0 200 200">
+      <circle class="progress-ring__circle-bg" [attr.r]="radius" cx="100" cy="100" />
+      <circle
+        class="progress-ring__circle"
+        [attr.stroke-dasharray]="circumference"
+        [attr.stroke-dashoffset]="strokeOffset()" [attr.r]="radius"
+        cx="100"
+        cy="100"
+      />
+    </svg>
+    <span class="timer-text">{{ displayTime() }}</span>
+  </div>
+  @if(timerService.coins().visible) {
+    <span class="coins-counter fw-bold">
+      +{{timerService.coins().amount}}
+      <svg width="1.5rem" height="1.5rem" viewBox="0 0 98 98" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M49 97.76C76.062 97.76 98 75.8757 98 48.88C98 21.8843 76.062 0 49 0C21.938 0 0 21.8843 0 48.88C0 75.8757 21.938 97.76 49 97.76Z" fill="#FCAA17"/>
+        <path d="M48.9998 86.5602C69.8612 86.5602 86.7728 69.69 86.7728 48.8797C86.7728 28.0693 69.8612 11.1992 48.9998 11.1992C28.1383 11.1992 11.2268 28.0693 11.2268 48.8797C11.2268 69.69 28.1383 86.5602 48.9998 86.5602Z" fill="#FEDA2C"/>
+        <path d="M49 19.9224L57.5905 37.2859L76.7985 40.0704L62.8997 53.5861L66.181 72.6699L49 63.6597L31.8191 72.6699L35.1004 53.5861L21.2007 40.0704L40.4095 37.2859L49 19.9224Z" fill="#FCAA17"/>
+      </svg>
+    </span>
+  }
+  <div class="controls">
+    @if(!timerService.state().isRunning && !timerService.state().isPaused) {
+    <button (click)="timerService.start()" class="btn-pur">Iniciar</button>
+    }
+    @else if(timerService.state().isRunning && !timerService.state().isPaused) {
+      <button (click)="timerService.stop()" class="btn-red">
+        <svg width="2rem" height="2rem" viewBox="0 0 125 127" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 30C0 13.4315 13.4315 0 30 0H95C111.569 0 125 13.4315 125 30V97C125 113.569 111.569 127 95 127H30C13.4315 127 0 113.569 0 97V30Z" fill="#D9D9D9"/>
+        </svg>
+      </button>
+      <button (click)="timerService.pause()" class="btn-pur">
+        <svg width="2rem" height="2rem" viewBox="0 0 119 127" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="47" height="127" rx="23.5" fill="#D9D9D9"/>
+        <rect x="71" width="48" height="127" rx="24" fill="#D9D9D9"/>
+      </svg>
+      </button>
+    }
+    @else {
+      <button (click)="timerService.stop()" class="btn-red">
+        <svg width="2rem" height="2rem" viewBox="0 0 125 127" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 30C0 13.4315 13.4315 0 30 0H95C111.569 0 125 13.4315 125 30V97C125 113.569 111.569 127 95 127H30C13.4315 127 0 113.569 0 97V30Z" fill="#D9D9D9"/>
+        </svg>
+      </button>
+      <button (click)="timerService.start()" class="btn-pur">
+        <svg width="2rem" height="2rem" viewBox="0 0 116 131" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M107.509 51.7035C118.038 57.8876 118.038 73.1125 107.509 79.2966L24.6028 127.988C13.9365 134.252 0.5 126.561 0.5 114.191L0.5 16.809C0.5 4.43923 13.9366 -3.2519 24.6028 3.01242L107.509 51.7035Z" fill="#D9D9D9"/>
+        </svg>
+      </button>
+    }
+  </div>
+</div>
