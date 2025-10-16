@@ -1,7 +1,10 @@
 <div class="p-relative app-container">
   <router-outlet></router-outlet>
   <div class="menu d-flex p-absolute p-b-4 p-t-3">
-    <button class="transparent active br-1">
+    <button
+    class="transparent br-1 {{menuSelected() == 0 ? 'active' : ''}}" (click)="select(0)"
+    (click)="select(0)"
+    >
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" x="0" y="0" viewBox="0 0 53 53" xml:space="preserve">
         <g>
           <path fill="#f05543" d="M16.8 7.492v3.14l-7.94 7.17V7.492z" opacity="1" data-original="#fc6559" data-darkreader-inline-fill="" style="--darkreader-inline-fill: #960e03;" class=""></path>
@@ -12,7 +15,10 @@
         </g>
       </svg>
     </button>
-    <button class="transparent br-1">
+    <button
+    class="transparent br-1 {{menuSelected() == 1 ? 'active' : ''}}"
+    (click)="select(1)"
+    >
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" x="0" y="0" viewBox="0 0 68 68" style="enable-background:new 0 0 512 512" xml:space="preserve">
         <g>
           <path fill="#fabb53" d="M65.945 17.574v38.52c0 2.75-2.63 4.76-5.27 3.99-8.37-2.43-16.73-2.01-25.09 1.25-1.02.4-2.15.4-3.17 0-8.36-3.26-16.72-3.68-25.09-1.26-2.64.77-5.27-1.23-5.27-3.98v-38.52c0-1.93 1.32-3.61 3.19-4.05 9.22-2.15 18.44-1.98 27.65.53.73.2 1.48.2 2.2 0 9.22-2.51 18.44-2.68 27.66-.53 1.87.44 3.19 2.12 3.19 4.05z"></path>
@@ -26,7 +32,10 @@
         </g>
       </svg>
     </button>
-    <button class="transparent br-1">
+    <button
+    class="transparent br-1 {{menuSelected() == 2 ? 'active' : ''}}"
+    (click)="select(2)"
+    >
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve">
         <g>
           <path fill="#00aa95" d="M113.707 512 55.575 391.792c-43.694-90.351-18.098-196.268 55.842-257.579 46.027-38.166 89.94-78.812 130.239-122.984L251.9 0l23.821 31.473c29.393 38.834 51.822 80.128 65.073 121.97z"></path>
@@ -35,7 +44,10 @@
         </g>
       </svg>
     </button>
-    <button class="transparent br-1">
+    <button
+    class="transparent br-1 {{menuSelected() == 3 ? 'active' : ''}}"
+    (click)="select(3)"
+    >
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve">
         <g>
           <path fill="#e3e0e4" d="M469.5 256c0 48.07-15.886 92.43-42.696 128.115-38.952 51.848-95.996 76.502-165.838 76.502-117.913 0-208.534-86.704-208.534-204.617 0-68.407 22.24-129.3 72.28-168.374C160.924 59.349 206.494 42.5 256 42.5c117.913 0 213.5 95.587 213.5 213.5z"></path>
@@ -58,7 +70,10 @@
         </g>
       </svg>
     </button>
-    <button class="transparent br-1">
+    <button
+    class="transparent br-1 {{menuSelected() == 4 ? 'active' : ''}}"
+    (click)="select(4)"
+    >
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve">
         <g transform="translate(0, 72)">
           <path fill="#8e969b" d="M24 288h464v24H24zM272.928 99.477c8.688-5.789 14.437-15.245 15.008-25.669C288.95 55.305 274.28 40 256 40a32 32 0 0 0-30.136 21.208A15.544 15.544 0 0 1 211.424 72H209.6c-8.35.05-15.161-6.678-15.211-15.029a15.116 15.116 0 0 1 .635-4.427c10.7-33.688 46.684-52.323 80.371-41.623 24.556 7.8 42.04 29.563 44.365 55.223l-.016.024c2.519 27.466-12.866 53.45-38.16 64.448a15.48 15.48 0 0 0-9.6 14.08V152H240v-1.6a62.824 62.824 0 0 1 31.959-50.332c.33-.185.655-.381.969-.591z"></path>

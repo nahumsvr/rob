@@ -1,8 +1,12 @@
 .menu {
   width: 100%;
   justify-content: space-around;
+  height: 6rem;
   bottom: 0;
   background-color: #302E33;
+  button {
+    border: #302E33 solid 2px;
+  }
   button.active {
     border: #635f68 solid 2px;
   }
