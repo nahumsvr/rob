@@ -1,8 +1,9 @@
 import { Component, signal } from '@angular/core';
+import { Duck } from "../../components/duck/duck";
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [Duck],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })
