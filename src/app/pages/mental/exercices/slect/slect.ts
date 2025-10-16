@@ -3,6 +3,7 @@
 import { Component, inject } from '@angular/core';
 // ¡Importa ActivatedRoute!
 import { Router, ActivatedRoute } from '@angular/router';
+import { Coins } from '../../../../services/coins';
 
 @Component({
   selector: 'app-slect',
@@ -16,6 +17,7 @@ export class Slect {
   router = inject(Router);
   // Inyecta la ruta activa
   route = inject(ActivatedRoute);
+  coinsService = inject(Coins);
 
   gotTo(path: string) {
     // Navega relativamente a la ruta actual

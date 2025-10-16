@@ -73,3 +73,20 @@ $icon-color: #a0a0a0;
     }
   }
 }
+
+.coins-counter {
+  /* Esta es la propiedad clave para centrar verticalmente */
+  gap: 0.4rem;
+  // padding: .5rem 1rem;
+  // background-color: #AEFF2D;
+  // color: #0F4D09;
+  // border-radius: 20px;
+  font-size: 1.2rem;
+  color: whitesmoke;
+  font-weight: 700;
+}
+
+.center-y-items {
+  display: inline-flex; /* Usa 'flex' si el span es un elemento de bloque */
+  align-items: center;
+}
