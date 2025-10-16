@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio de Respiración</title>
+    <!-- Se importan las fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Reset Básico y Estilos Globales --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1f2937; /* bg-gray-800 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #ffffff;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* --- Contenedor Principal (Simula Teléfono) --- */
+        .phone-container {
+            width: 100%;
+            max-width: 24rem; /* max-w-sm */
+            height: 85vh;
+            max-height: 750px;
+            background-color: #1C1C1E;
+            border-radius: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* shadow-2xl */
+            padding: 1rem; /* p-4 */
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* --- Contenido Principal de la App --- */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem; /* gap-6 */
+            text-align: center;
+            padding: 0 1rem; /* px-4 */
+        }
+
+        /* --- Elementos de la UI --- */
+        #phase-title {
+            font-size: 1.875rem; /* text-3xl */
+            font-weight: 700; /* font-bold */
+            color: #E5E7EB; /* text-gray-200 */
+            height: 4rem; /* h-16 */
+        }
+
+        #start-screen {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem; /* gap-4 */
+            flex: 1;
+        }
+
+        #start-btn {
+            width: 100%;
+            max-width: 20rem; /* max-w-xs */
+            background-color: #AEFF2D;
+            color: #0F4D09;
+            font-weight: 700; /* font-bold */
+            padding: 1rem 1.5rem; /* py-4 px-6 */
+            border-radius: 9999px; /* rounded-full */
+            font-size: 1.25rem; /* text-xl */
+            border: none;
+            cursor: pointer;
+            transition: transform 0.15s ease-out;
+        }
+
+        #start-btn:active {
+            transform: scale(0.95); /* active:scale-95 */
+        }
+
+        #timer-display {
+            position: relative;
+            width: 16rem; /* w-64 */
+            height: 16rem; /* h-64 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            margin: 2rem 0; /* my-8 */
+        }
+
+        #timer-display svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+
+        .progress-ring__circle-bg {
+            stroke: #3A3A3C;
+            stroke-width: 12;
+            fill: transparent;
+        }
+
+        .progress-ring__circle {
+            stroke: #6EE7B7;
+            stroke-linecap: round;
+            stroke-width: 12;
+            fill: transparent;
+            transition: stroke-dashoffset 1s linear, stroke 0.5s ease;
+        }
+
+        #timer-text {
+            font-size: 3.75rem; /* text-6xl */
+            font-weight: 300; /* font-light */
+            letter-spacing: 0.05em; /* tracking-wider */
+        }
+
+        #repetition-counter {
+            font-size: 1.125rem; /* text-lg */
+            color: #9CA3AF; /* text-gray-400 */
+            height: 2rem; /* h-8 */
+        }
+
+        /* --- Clase de Utilidad --- */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="phone-container">
+        <main>
+            <h1 id="phase-title">Ejercicio de Respiración</h1>
+            <div id="start-screen">
+                 <button id="start-btn">Comenzar</button>
+            </div>
+            <div id="timer-display" class="hidden">
+                <svg viewBox="0 0 200 200">
+                    <circle class="progress-ring__circle-bg" r="90" cx="100" cy="100" />
+                    <circle id="progress-circle" class="progress-ring__circle" r="90" cx="100" cy="100" />
+                </svg>
+                <span id="timer-text">00</span>
+            </div>
+            <div id="repetition-counter"></div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Elementos del DOM ---
+            const startScreen = document.getElementById('start-screen');
+            const startBtn = document.getElementById('start-btn');
+            const timerDisplay = document.getElementById('timer-display');
+            const phaseTitle = document.getElementById('phase-title');
+            const timerText = document.getElementById('timer-text');
+            const progressCircle = document.getElementById('progress-circle');
+            const repetitionCounter = document.getElementById('repetition-counter');
+
+            // --- Configuración del Ejercicio ---
+            const phases = [
+                { duration: 7, text: 'Inhala profundo...', color: '#6EE7B7' },
+                { duration: 4, text: 'Sostén el aire...', color: '#FCD34D' },
+                { duration: 6, text: 'Exhala lentamente...', color: '#FCA5A5' }
+            ];
+            const MAX_REPETITIONS = 10;
+
+            // --- Estado del Temporizador ---
+            let timerState = {
+                currentSeconds: 0,
+                intervalId: null,
+            };
+            let currentPhaseIndex = 0;
+            let repetitionCount = 0;
+
+            // --- Configuración del Círculo ---
+            const radius = 90;
+            const circumference = 2 * Math.PI * radius;
+            progressCircle.style.strokeDasharray = circumference;
+
+            // --- Funciones ---
+            const updateDisplay = (duration) => {
+                const displaySeconds = timerState.currentSeconds.toString().padStart(2, '0');
+                timerText.textContent = displaySeconds;
+
+                const progress = duration === 0 ? 0 : timerState.currentSeconds / duration;
+                const offset = circumference * (1 - progress);
+                progressCircle.style.strokeDashoffset = offset;
+            };
+
+            const runNextPhase = () => {
+                if (repetitionCount >= MAX_REPETITIONS) {
+                    showStartScreen('¡Excelente! Repetir');
+                    return;
+                }
+                
+                const currentPhase = phases[currentPhaseIndex];
+                timerState.currentSeconds = currentPhase.duration;
+                
+                phaseTitle.textContent = currentPhase.text;
+                progressCircle.style.stroke = currentPhase.color;
+                repetitionCounter.textContent = `Repetición ${repetitionCount + 1} de ${MAX_REPETITIONS}`;
+
+                updateDisplay(currentPhase.duration);
+
+                timerState.intervalId = setInterval(() => {
+                    timerState.currentSeconds -= 1;
+                    updateDisplay(currentPhase.duration);
+                    
+                    if (timerState.currentSeconds < 0) {
+                        handlePhaseFinish();
+                    }
+                }, 1000);
+            };
+
+            const handlePhaseFinish = () => {
+                clearInterval(timerState.intervalId);
+                
+                currentPhaseIndex++;
+                if (currentPhaseIndex >= phases.length) {
+                    currentPhaseIndex = 0;
+                    repetitionCount++;
+                }
+                
+                runNextPhase();
+            };
+
+            const startExercise = () => {
+                repetitionCount = 0;
+                currentPhaseIndex = 0;
+                
+                startScreen.classList.add('hidden');
+                timerDisplay.classList.remove('hidden');
+                repetitionCounter.classList.remove('hidden');
+
+                runNextPhase();
+            };
+            
+            const showStartScreen = (buttonText = 'Comenzar') => {
+                phaseTitle.textContent = 'Ejercicio de Respiración';
+                timerDisplay.classList.add('hidden');
+                repetitionCounter.classList.add('hidden'); // Ocultar contador en pantalla de inicio
+                startScreen.classList.remove('hidden');
+                startBtn.textContent = buttonText;
+            };
+
+            // --- Event Listener ---
+            startBtn.addEventListener('click', startExercise);
+
+        });
+    </script>
+
+</body>
+</html>
+

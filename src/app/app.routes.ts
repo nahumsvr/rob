@@ -17,7 +17,8 @@ export const routes: Routes = [
   },
   {
     path: 'mental',
-    loadComponent: () => import('./pages/mental/mental').then(m => m.Mental)
+    loadComponent: () => import('./pages/mental/mental').then(m => m.Mental),
+    loadChildren: () => import('./pages/mental/dashboard.routes').then(m => m.routes)
   },
   {
     path: 'sleep',
